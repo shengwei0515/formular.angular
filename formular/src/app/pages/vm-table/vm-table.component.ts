@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 export interface EnvInfoWithVM {
   create_at: Date,
   terraform_workspace: string
@@ -19,11 +18,19 @@ const VM_DATA: EnvInfoWithVM[] = [
 export class VmTableComponent implements OnInit {
 
   tableData: EnvInfoWithVM[] = [];
-
-  constructor() { }
+  displayDetailDialog: boolean = false;
 
   ngOnInit(): void {
     this.tableData = VM_DATA;
+  }
+
+  showDetailDialog(terraformWorkspace: string): void {
+    this.displayDetailDialog = true;
+    console.log(terraformWorkspace);
+  }
+
+  closeDetailDialog(): void {
+    this.displayDetailDialog = false
   }
 
 }

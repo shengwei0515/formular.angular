@@ -3,8 +3,8 @@
     <ng-template pTemplate="caption">
         <div class="p-d-flex">
             <span class="p-input-icon-left p-ml-auto">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword" />
+                <!-- <i class="pi pi-search"></i> -->
+                <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target)!.value, 'contains')" placeholder="Search keyword" />
             </span>
         </div>
     </ng-template>
@@ -12,12 +12,22 @@
         <tr>
             <th pSortableColumn="create_at">create_at <p-sortIcon field="create_at"></p-sortIcon></th>
             <th pSortableColumn="terraform_workspace">terraform_workspace<p-sortIcon field="terraform_workspace"></p-sortIcon></th>
+            <th pSortableColumn="owner">owner<p-sortIcon field="owner"></p-sortIcon></th>
+            <th>detail</th>
+            <th>destroy</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-tableData >
         <tr>
             <td>{{ tableData.create_at }}</td>
             <td>{{ tableData.terraform_workspace }}</td>
+            <td>{{ tableData.owner }}</td>
+            <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
+            </td>
+            <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                <i class="pi pi-trash" style="margin-right: 10%;" ></i>Destroy
+            </td>
         </tr>
     </ng-template>
 </p-table>

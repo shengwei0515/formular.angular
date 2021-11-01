@@ -1,49 +1,14 @@
-th {
-   background-color:  #333;
-   color: white;
-   font: bold 16px;
-   padding: 14px 16px;
-   border-top:1px solid white;
-   border-bottom:1px solid black;
-}
-
-td {
-   padding: 12px 14px;
-   color: white;
-   font: 12px;
-   text-align: center;
-}
-
-tr {
-   background-color: #333;
-}
 
 tr:hover {
    background-color: #04AA6D;
+   color: white;
 }
 
-.p-d-flex {
-   background-color: #333;
-   font: bold 16px;
-   padding: 14px 10px;
-   border-top:1px solid white;
+td.button {
+   box-sizing:content-box;
 }
 
-.p-input-icon-left {
-   background-color: white;
-   padding: 4px 2px;
-   border-radius: 5px;
-}
-
-.pi {
-   padding: 0px 4px;
-}
-
-
-input {
-   border:white;
-   background-color: white;
-   padding: 1px 2px;
-   border-width: 2px;
-   border-image: initial;
+.td-button:hover {
+   background-color: #04AA6D;
+   box-shadow: 0px 0px 20px white;
 }
