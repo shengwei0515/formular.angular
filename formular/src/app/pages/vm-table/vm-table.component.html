@@ -2,8 +2,8 @@
 <p-table [value]="tableData" responsiveLayout="scroll">
     <ng-template pTemplate="header">
         <tr>
-            <th>create_at</th>
-            <th>terraform_workspace</th>
+            <th pSortableColumn="create_at">create_at <p-sortIcon field="create_at"></p-sortIcon></th>
+            <th pSortableColumn="terraform_workspace">terraform_workspace<p-sortIcon field="terraform_workspace"></p-sortIcon></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-tableData >
