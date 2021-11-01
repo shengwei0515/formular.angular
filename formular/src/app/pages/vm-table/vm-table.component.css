@@ -21,3 +21,29 @@ tr {
 tr:hover {
    background-color: #04AA6D;
 }
+
+.p-d-flex {
+   background-color: #333;
+   font: bold 16px;
+   padding: 14px 10px;
+   border-top:1px solid white;
+}
+
+.p-input-icon-left {
+   background-color: white;
+   padding: 4px 2px;
+   border-radius: 5px;
+}
+
+.pi {
+   padding: 0px 4px;
+}
+
+
+input {
+   border:white;
+   background-color: white;
+   padding: 1px 2px;
+   border-width: 2px;
+   border-image: initial;
+}

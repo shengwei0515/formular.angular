@@ -1,6 +1,14 @@
 
-<p-table [value]="tableData" responsiveLayout="scroll">
-    <ng-template pTemplate="header">
+<p-table #vmTable [value]="tableData" responsiveLayout="scroll" [globalFilterFields]="['create_at','terraform_workspace']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header"> 
         <tr>
             <th pSortableColumn="create_at">create_at <p-sortIcon field="create_at"></p-sortIcon></th>
             <th pSortableColumn="terraform_workspace">terraform_workspace<p-sortIcon field="terraform_workspace"></p-sortIcon></th>
