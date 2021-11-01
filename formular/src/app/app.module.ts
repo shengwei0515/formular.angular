@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { SettingComponent } from './pages/setting/setting.component';
 import { VmTableComponent } from './pages/vm-table/vm-table.component';
 
+import { TableModule } from 'primeng/table';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,8 @@ import { VmTableComponent } from './pages/vm-table/vm-table.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

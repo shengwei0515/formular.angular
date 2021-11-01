@@ -1,0 +1,23 @@
+th {
+   background-color:  #333;
+   color: white;
+   font: bold 16px;
+   padding: 14px 16px;
+   border-top:1px solid white;
+   border-bottom:1px solid black;
+}
+
+td {
+   padding: 12px 14px;
+   color: white;
+   font: 12px;
+   text-align: center;
+}
+
+tr {
+   background-color: #333;
+}
+
+tr:hover {
+   background-color: #04AA6D;
+}
