@@ -10,8 +10,10 @@ import { SettingComponent } from './pages/setting/setting.component';
 import { VmTableComponent } from './pages/vm-table/vm-table.component';
 
 import { TableModule } from 'primeng/table';
-import { DialogModule } from 'primeng/dialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.component';
 
 
 
@@ -19,7 +21,8 @@ import { MessageModule } from 'primeng/message';
   declarations: [
     AppComponent,
     SettingComponent,
-    VmTableComponent
+    VmTableComponent,
+    DetialCardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +30,9 @@ import { MessageModule } from 'primeng/message';
     NoopAnimationsModule,
     AppRoutingModule,
     TableModule,
-    DialogModule,
-    MessageModule
+    DynamicDialogModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
