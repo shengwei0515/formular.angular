@@ -13,7 +13,10 @@ import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { AccordionModule } from 'primeng/accordion';
+
 import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.component';
+import { SettingCardComponent } from './pages/setting/setting-card/setting-card.component';
 
 
 
@@ -22,7 +25,8 @@ import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.co
     AppComponent,
     SettingComponent,
     VmTableComponent,
-    DetialCardComponent
+    DetialCardComponent,
+    SettingCardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.co
     TableModule,
     DynamicDialogModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

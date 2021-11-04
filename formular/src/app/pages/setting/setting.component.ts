@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingCardComponent } from './setting-card/setting-card.component';
 
 @Component({
   selector: 'app-setting',
