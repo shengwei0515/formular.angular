@@ -1,6 +1,2 @@
 # formular.angular
-
-
-# reference 
-* https://www.w3schools.com/css/css_navbar_horizontal.asp
-* https://primefaces.org/primeng/showcase/#/table/sort
+This is the fornt end page for formular, which is an azure machine monitor for my team
