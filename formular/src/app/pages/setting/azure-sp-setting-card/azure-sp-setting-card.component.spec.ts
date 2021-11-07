@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingCardComponent } from './setting-card.component';
+import { AzureSpSettingCardComponent } from './azure-sp-setting-card.component';
 
 describe('SettingCardComponent', () => {
-  let component: SettingCardComponent;
-  let fixture: ComponentFixture<SettingCardComponent>;
+  let component: AzureSpSettingCardComponent;
+  let fixture: ComponentFixture<AzureSpSettingCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingCardComponent ]
+      declarations: [ AzureSpSettingCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingCardComponent);
+    fixture = TestBed.createComponent(AzureSpSettingCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

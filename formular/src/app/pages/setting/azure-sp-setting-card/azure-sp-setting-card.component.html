@@ -1,0 +1,26 @@
+<div style="padding-top: 1%;">
+    <p-table #vmTable [value]="servicePrincipleSettings" responsiveLayout="scroll" [globalFilterFields]="['clientId','subscriptionId', 'talentId']">
+        <ng-template pTemplate="header"> 
+            <tr>
+                <th pSortableColumn="clientId">ClentId <p-sortIcon field="clientId"></p-sortIcon></th>
+                <th pSortableColumn="subscriptionId">SubscriptionId<p-sortIcon field="subscriptionId"></p-sortIcon></th>
+                <th pSortableColumn="talentId">TalentId<p-sortIcon field="talentId"></p-sortIcon></th>
+                <th pSortableColumn="update">Update</th>
+                <th pSortableColumn="remove">Remove</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-servicePrincipleSettings >
+            <tr>
+                <td>{{ servicePrincipleSettings.clientId }}</td>
+                <td>{{ servicePrincipleSettings.subscriptionId }}</td>
+                <td>{{ servicePrincipleSettings.talentId }}</td>
+                <td class="td-button" type="button" (click)="clickUpdate"> 
+                    <i class="pi pi-pencil" style="margin-right: 10%;" ></i>Update
+                </td>
+                <td class="td-button" type="button" (click)="clickRemove"> 
+                    <i class="pi pi-trash" style="margin-right: 10%;" ></i>Remove
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

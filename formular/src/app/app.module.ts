@@ -16,7 +16,7 @@ import { MessagesModule } from 'primeng/messages';
 import { AccordionModule } from 'primeng/accordion';
 
 import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.component';
-import { SettingCardComponent } from './pages/setting/setting-card/setting-card.component';
+import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-card/azure-sp-setting-card.component';
 
 
 
@@ -26,7 +26,7 @@ import { SettingCardComponent } from './pages/setting/setting-card/setting-card.
     SettingComponent,
     VmTableComponent,
     DetialCardComponent,
-    SettingCardComponent
+    AzureSpSettingCardComponent
   ],
   imports: [
     BrowserModule,

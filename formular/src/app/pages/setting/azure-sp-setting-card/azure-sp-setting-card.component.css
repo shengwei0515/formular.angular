@@ -23,11 +23,11 @@ tr:hover {
     color: white;
  }
  
- td.button {
+td.button {
     box-sizing:content-box;
  }
  
- .td-button:hover {
+.td-button:hover {
     background-color: #04AA6D;
     box-shadow: 0px 0px 20px white;
  }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingCardComponent } from './setting-card/setting-card.component';
 
 @Component({
   selector: 'app-setting',
@@ -13,4 +12,9 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onTableOpen(event: any): void {
+    console.log(event.index)
+    if ( event.index == 0){
+    }
+  }
 }
