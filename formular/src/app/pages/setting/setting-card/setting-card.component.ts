@@ -32,4 +32,12 @@ export class SettingCardComponent implements OnInit {
     console.log(this.servicePrincipleSettings)
   }
 
+  clickUpdate(): void {
+    console.log("update")
+  }
+
+  clickRemove(): void {
+    console.log("remove")
+  }
+
 }

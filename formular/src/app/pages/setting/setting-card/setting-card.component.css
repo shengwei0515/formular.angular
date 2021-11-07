@@ -16,3 +16,18 @@
 .setting-card .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link:hover {
     color: #04AA6D;
 }
+
+
+tr:hover {
+    background-color: #04AA6D;
+    color: white;
+ }
+ 
+ td.button {
+    box-sizing:content-box;
+ }
+ 
+ .td-button:hover {
+    background-color: #04AA6D;
+    box-shadow: 0px 0px 20px white;
+ }
