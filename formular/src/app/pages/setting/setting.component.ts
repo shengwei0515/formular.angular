@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 
 @Component({
   selector: 'app-setting',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly appConfig: AppConfigService) { }
 
   ngOnInit(): void {
+    console.log(this.appConfig.baseUrl);
   }
 
   onTableOpen(event: any): void {

@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +16,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { AccordionModule } from 'primeng/accordion';
 
+import { AppConfigService, initConfig } from './core/services/app-config/app-config.service';
 import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.component';
 import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-card/azure-sp-setting-card.component';
 
@@ -31,6 +33,7 @@ import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-ca
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NoopAnimationsModule,
     AppRoutingModule,
     TableModule,
@@ -39,7 +42,15 @@ import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-ca
     MessagesModule,
     AccordionModule
   ],
-  providers: [],
+  providers: [
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      deps: [ AppConfigService ],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
