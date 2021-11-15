@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 
 @Component({
   selector: 'app-setting',
@@ -8,15 +7,24 @@ import { AppConfigService } from 'src/app/core/services/app-config/app-config.se
 })
 export class SettingComponent implements OnInit {
 
-  constructor(private readonly appConfig: AppConfigService) { }
+  constructor() { }
+
+  ifAzureSpSettingShow: Boolean = false;
 
   ngOnInit(): void {
-    console.log(this.appConfig.baseUrl);
   }
 
   onTableOpen(event: any): void {
-    console.log(event.index)
     if ( event.index == 0){
+      this.ifAzureSpSettingShow = true;
+      console.log("show");
+    }
+  }
+
+  onTableClose(event: any): void {
+    if ( event.index == 0){
+      this.ifAzureSpSettingShow = false;
+      console.log("hide");
     }
   }
 }

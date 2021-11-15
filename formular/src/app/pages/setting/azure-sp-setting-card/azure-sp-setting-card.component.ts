@@ -1,12 +1,8 @@
+import { HttpContext } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
-const AZURE_SUB_DATA = [
-  {
-    talentId: "aad",
-    clientId: "small_seal",
-    subscriptionId: "subid"
-  }
-]
+import { ApiUrls } from 'src/app/core/services/http/formularApiContent';
+import { HttpService } from 'src/app/core/services/http/http.service';
+import { ServicePrincipleGetallViewModel } from './azure-sp-setting-card.model';
 
 @Component({
   selector: 'app-azure-sp-setting-card',
@@ -16,12 +12,14 @@ const AZURE_SUB_DATA = [
 })
 export class AzureSpSettingCardComponent implements OnInit {
 
-  servicePrincipleSettings: any = [];
+  servicePrincipleSettings: ServicePrincipleGetallViewModel[] = [];
 
-  constructor() { }
+  constructor(
+    private readonly httpService: HttpService
+  ) { }
 
   ngOnInit(): void {
-    this.servicePrincipleSettings = AZURE_SUB_DATA;
+    this.getAllSp();
   }
 
   clickUpdate(): void {
@@ -30,6 +28,13 @@ export class AzureSpSettingCardComponent implements OnInit {
 
   clickRemove(): void {
     console.log("remove")
+  }
+
+  getAllSp(): void {
+    this.httpService.get({url: ApiUrls.SERVICE_PRINCIPLE_GET_ALL}).subscribe(res => {
+      this.servicePrincipleSettings = res;
+      console.log(res)
+    });
   }
 
 }
