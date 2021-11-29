@@ -37,18 +37,17 @@ export class HttpService {
     return defer(() => {
       const httpOptions = this.setHttpOptions(context.param);
       const url = urlJoin(this.baseUrl, context.url);
-      this.httpClient.post<any>(urlJoin(this.baseUrl, context.url), context.body ?? {}, httpOptions);
+      return this.httpClient.post<any>(urlJoin(this.baseUrl, context.url), context.body ?? {}, httpOptions);
     });
   }
-
-
 
   private setHttpOptions(params?: HttpParams): Object{
     return  { 
         headers: new HttpHeaders({
           'Content-Type': 'application/json; charset=utf-8'
         }),
-        params: params
+        params: params,
+        observe: 'response'
     };
   }
 }
