@@ -2,9 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DynamicDialogRef} from 'primeng/dynamicdialog';
 import { ApiUrls, ServicePrincipleCreateParameter } from 'src/app/core/services/http/formularApiContent';
 import { HttpService } from 'src/app/core/services/http/http.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-create-sp',
@@ -22,7 +19,6 @@ export class CreateSpComponent implements OnInit {
   constructor(
     private readonly dynamicDialogRef: DynamicDialogRef,
     private readonly httpService: HttpService,
-    private readonly httpClient: HttpClient
   ) { 
     this.clientId = "";
     this.clientSecret = "";
@@ -45,10 +41,8 @@ export class CreateSpComponent implements OnInit {
       ClientId: this.clientId,
       TenantId: this.tenantId,
     };
-    // return this.httpClient.post("https://localhost:5001/api/ServicePrincipal/Create", spToCreate);
     this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_CREATE , body: spToCreate})
                     .subscribe( res => {
-                      console.log(res);
                     });
   }
 }

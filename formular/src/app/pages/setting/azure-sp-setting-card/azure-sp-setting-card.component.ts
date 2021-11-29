@@ -4,6 +4,7 @@ import { ApiUrls } from 'src/app/core/services/http/formularApiContent';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { ServicePrincipleGetallViewModel } from './azure-sp-setting-card.model';
 import { CreateSpComponent } from './create-sp/create-sp.component';
+import { DeleteSpComponent } from './delete-sp/delete-sp.component';
 
 @Component({
   selector: 'app-azure-sp-setting-card',
@@ -23,22 +24,31 @@ export class AzureSpSettingCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSp();
-    this.showCreateDiag();
+  }
+
+  getAllSp(): void {
+    this.httpService.get({url: ApiUrls.SERVICE_PRINCIPLE_GET_ALL}).subscribe(res => {
+      this.servicePrincipleSettings = res.body;
+      console.log("getdata");
+    });
   }
 
   clickUpdate(): void {
     console.log("update")
   }
 
-  clickRemove(): void {
-    console.log("remove")
-  }
-
-  getAllSp(): void {
-    this.httpService.get({url: ApiUrls.SERVICE_PRINCIPLE_GET_ALL}).subscribe(res => {
-      console.log(res);
-      this.servicePrincipleSettings = res.body;
+  clickRemove(modelToDelete: ServicePrincipleGetallViewModel): void {
+    var diaglogRef = this.dialogService.open(DeleteSpComponent, {
+      header: "Aure You Sure Want To Remove Service Principal",
+      width: '50%',
+      data: {
+        modelToDelete: modelToDelete
+      }
     });
+    diaglogRef.onClose.subscribe( _ => {
+      console.log("close")
+      this.getAllSp();
+    })
   }
 
   showCreateDiag(): void {
@@ -50,6 +60,7 @@ export class AzureSpSettingCardComponent implements OnInit {
         }
     })
     diaglogRef.onClose.subscribe( _ => {
+      console.log("close")
       this.getAllSp();
     })
   }

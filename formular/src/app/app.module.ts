@@ -23,6 +23,7 @@ import { AppConfigService, initConfig } from './core/services/app-config/app-con
 import { DetialCardComponent } from './pages/vm-table/detial-card/detial-card.component';
 import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-card/azure-sp-setting-card.component';
 import { CreateSpComponent } from './pages/setting/azure-sp-setting-card/create-sp/create-sp.component';
+import { DeleteSpComponent } from './pages/setting/azure-sp-setting-card/delete-sp/delete-sp.component';
 
 
 
@@ -33,7 +34,8 @@ import { CreateSpComponent } from './pages/setting/azure-sp-setting-card/create-
     DetialCardComponent,
     SettingComponent,
     VmTableComponent,
-    CreateSpComponent
+    CreateSpComponent,
+    DeleteSpComponent
   ],
   imports: [
     AppRoutingModule,

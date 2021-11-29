@@ -37,17 +37,26 @@ export class HttpService {
     return defer(() => {
       const httpOptions = this.setHttpOptions(context.param);
       const url = urlJoin(this.baseUrl, context.url);
-      return this.httpClient.post<any>(urlJoin(this.baseUrl, context.url), context.body ?? {}, httpOptions);
+      return this.httpClient.post<any>(url, context.body ?? {}, httpOptions);
     });
   }
 
-  private setHttpOptions(params?: HttpParams): Object{
+  public delete(context: HttpRequestContext): Observable<any> {
+    return defer( () =>{
+      const httpOptions = this.setHttpOptions(context.param, context.body);
+      const url = urlJoin(this.baseUrl, context.url);
+      return this.httpClient.delete<any>(url, httpOptions);
+    });
+  }
+
+  private setHttpOptions(params?: HttpParams, body?: any): Object{
     return  { 
         headers: new HttpHeaders({
           'Content-Type': 'application/json; charset=utf-8'
         }),
         params: params,
-        observe: 'response'
+        observe: 'response',
+        body: body
     };
   }
 }
