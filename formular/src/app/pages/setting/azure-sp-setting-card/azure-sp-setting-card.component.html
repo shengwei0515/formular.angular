@@ -6,16 +6,16 @@
         <ng-template pTemplate="header"> 
             <tr>
                 <th pSortableColumn="clientId">ClentId <p-sortIcon field="clientId"></p-sortIcon></th>
-                <th pSortableColumn="subscriptionId">SubscriptionId<p-sortIcon field="subscriptionId"></p-sortIcon></th>
                 <th pSortableColumn="talentId">TalentId<p-sortIcon field="talentId"></p-sortIcon></th>
+                <th pSortableColumn="subscriptionId">SubscriptionId<p-sortIcon field="subscriptionId"></p-sortIcon></th>
                 <th pSortableColumn="remove">Remove</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-servicePrincipleSettings >
             <tr>
                 <td>{{ servicePrincipleSettings.clientId }}</td>
-                <td>{{ servicePrincipleSettings.subscriptionId }}</td>
                 <td>{{ servicePrincipleSettings.tenantId }}</td>
+                <td>{{ servicePrincipleSettings.subscriptionId }}</td>
                 <td class="td-button" type="button" (click)="clickRemove(servicePrincipleSettings)"> 
                     <i class="pi pi-trash" style="margin-right: 10%;" ></i>Remove
                 </td>
