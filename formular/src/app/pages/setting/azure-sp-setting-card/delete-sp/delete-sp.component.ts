@@ -24,29 +24,19 @@ export class DeleteSpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClieckYes(): void {
-    var parameterForDelete: ServicePrincipleCreateParameter = {
-      SubscriptionId: this.modelToDelete.subscriptionId,
-      ClientSecret: "",
-      ClientId: this.modelToDelete.clientId,
-      TenantId: this.modelToDelete.tenantId
-    };
-    this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_DELETE, body: parameterForDelete}).subscribe( res => {
-    });
+  async onClieckYes(): Promise<any> {
+    await this.deleteSp();
     this.ref.close();
   }
 
-  deleteSp(): void {
+  async deleteSp(): Promise<any> {
     var parameterForDelete: ServicePrincipleCreateParameter = {
       SubscriptionId: this.modelToDelete.subscriptionId,
       ClientSecret: "",
       ClientId: this.modelToDelete.clientId,
       TenantId: this.modelToDelete.tenantId
     };
-    this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_DELETE , body: parameterForDelete})
-                    .subscribe( res => {
-                      console.log(res);
-                    });
+    await this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_DELETE , body: parameterForDelete}).toPromise();
   }
 
   onClieckNo(): void {

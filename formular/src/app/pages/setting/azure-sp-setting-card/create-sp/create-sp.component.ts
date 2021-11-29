@@ -1,3 +1,4 @@
+import { HttpEvent } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DynamicDialogRef} from 'primeng/dynamicdialog';
 import { ApiUrls, ServicePrincipleCreateParameter } from 'src/app/core/services/http/formularApiContent';
@@ -29,20 +30,18 @@ export class CreateSpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(): void {
-    this.create();
+  async submit(): Promise<any> {
+    await this.create();
     this.dynamicDialogRef.close();
   }
   
-  create(): void {
+  async create(): Promise<any>{
     var spToCreate: ServicePrincipleCreateParameter = {
       SubscriptionId: this.subscriptionId,
       ClientSecret: this.clientSecret,
       ClientId: this.clientId,
       TenantId: this.tenantId,
     };
-    this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_CREATE , body: spToCreate})
-                    .subscribe( res => {
-                    });
+    await this.httpService.post({url: ApiUrls.SERVICE_PRINCIPLE_CREATE , body: spToCreate}).toPromise();
   }
 }

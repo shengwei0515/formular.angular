@@ -29,7 +29,6 @@ export class AzureSpSettingCardComponent implements OnInit {
   getAllSp(): void {
     this.httpService.get({url: ApiUrls.SERVICE_PRINCIPLE_GET_ALL}).subscribe(res => {
       this.servicePrincipleSettings = res.body;
-      console.log("getdata");
     });
   }
 
@@ -46,7 +45,6 @@ export class AzureSpSettingCardComponent implements OnInit {
       }
     });
     diaglogRef.onClose.subscribe( _ => {
-      console.log("close")
       this.getAllSp();
     })
   }
@@ -60,7 +58,6 @@ export class AzureSpSettingCardComponent implements OnInit {
         }
     })
     diaglogRef.onClose.subscribe( _ => {
-      console.log("close")
       this.getAllSp();
     })
   }

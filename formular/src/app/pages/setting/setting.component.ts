@@ -17,7 +17,6 @@ export class SettingComponent implements OnInit {
   onTableOpen(event: any): void {
     if ( event.index == 0){
       this.ifAzureSpSettingShow = true;
-      console.log("show");
     }
   }
 
