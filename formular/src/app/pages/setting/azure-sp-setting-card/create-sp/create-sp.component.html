@@ -1,0 +1,32 @@
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">ClientId:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText placeholder="Client Id" [(ngModel)]="clientId" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">ClientSecret:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="Client Secret" [(ngModel)]="clientSecret" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">TenantId:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="Tenant Id" [(ngModel)]="tenantId" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">SubscriptionId:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="Subscription Id" [(ngModel)]="subscriptionId" />
+    </div>
+</div>
+
+<div class="field flex flex-row-reverse">
+    <button class="p-button flex" pButton type="button" label="Submit" icon="pi" (click)="submit()"></button>
+</div>
