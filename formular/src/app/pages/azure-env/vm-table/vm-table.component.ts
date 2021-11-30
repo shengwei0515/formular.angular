@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 
@@ -21,7 +21,8 @@ const VM_DATA: EnvInfoWithVM[] = [
   providers: [ DialogService, MessageService ]
 })
 export class VmTableComponent implements OnInit {
-
+  @Input() subscription = '';
+  
   tableData: EnvInfoWithVM[] = [];
   displayDetailDialog: boolean = false;
 
@@ -31,6 +32,7 @@ export class VmTableComponent implements OnInit {
 
   
   ngOnInit(): void {
+    console.log("vm-table create");
     this.tableData = VM_DATA;
   }
 

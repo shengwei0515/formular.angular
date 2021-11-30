@@ -1,0 +1,7 @@
+<div style="padding-top: 1%;">
+    <p-accordion [multiple]="true">
+        <p-accordionTab #tab *ngFor="let subscription of subscriptionList" header="{{ subscription.subscriptionName }} ({{ subscription.subscriptionId }})" >
+            <app-vm-table *ngIf="tab.selected" [subscription]=subscription.subscriptionId></app-vm-table>
+        </p-accordionTab>
+    </p-accordion>
+</div>
