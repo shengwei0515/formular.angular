@@ -22,7 +22,6 @@ export class AzureEnvComponent implements OnInit {
 
   getAvailiableSubscription(): void {
     this.httpService.get({url: ApiUrls.AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS}).subscribe( (res) => {
-      console.log(res);
       this.subscriptionList = res.body;
     });
   }

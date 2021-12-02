@@ -2,17 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 
+import { HttpService } from 'src/app/core/services/http/http.service';
+import { urlJoin } from 'url-join-ts';
+import { ApiUrls, AzureEnvGetBySubscriptionResponse } from 'src/app/core/services/http/formularApiContent';
 import { DetialCardComponent } from './detial-card/detial-card.component'
-
-export interface EnvInfoWithVM {
-  create_at: Date,
-  terraform_workspace: string
-}
-
-const VM_DATA: EnvInfoWithVM[] = [
-  { create_at: new Date("2019-01-16"), terraform_workspace: "test1"},
-  { create_at: new Date("2019-01-26"), terraform_workspace: "test2"},
-]
 
 @Component({
   selector: 'app-vm-table',
@@ -23,17 +16,20 @@ const VM_DATA: EnvInfoWithVM[] = [
 export class VmTableComponent implements OnInit {
   @Input() subscription = '';
   
-  tableData: EnvInfoWithVM[] = [];
+  isGettingData: boolean = true;
+  tableData: AzureEnvGetBySubscriptionResponse[] = [];
   displayDetailDialog: boolean = false;
 
-  constructor(public dialogService: DialogService, public messageService: MessageService) {}
+  constructor(
+    private dialogService: DialogService, 
+    private messageService: MessageService,
+    private httpService: HttpService) {}
 
   ref?: DynamicDialogRef;
 
   
   ngOnInit(): void {
-    console.log("vm-table create");
-    this.tableData = VM_DATA;
+    this.getAzureEnvInfoBySubscription(this.subscription);
   }
 
   showDetailDialog(terraformWorkspace: string): void {
@@ -51,4 +47,10 @@ export class VmTableComponent implements OnInit {
     })
   }
 
+  getAzureEnvInfoBySubscription(subscriptionId: string): void {
+    this.httpService.get({url: urlJoin(ApiUrls.AZURE_ENV_GET_BY_SUBSCRIPTION, subscriptionId)}).subscribe( res => {
+      this.tableData = res.body;
+      this.isGettingData = false;
+    });
+  }
 }

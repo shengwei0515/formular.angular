@@ -1,35 +1,43 @@
-{{ subscription }}
 <div style="padding-top: 1%;">
-<p-table #vmTable [value]="tableData" responsiveLayout="scroll" [globalFilterFields]="['create_at','terraform_workspace']">
-    <ng-template pTemplate="caption">
-        <div class="flex">
-            <span class="p-input-icon-left ml-auto">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target)!.value, 'contains')" placeholder="Search keyword"/>
-            </span>
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header"> 
-        <tr>
-            <th pSortableColumn="create_at">create_at <p-sortIcon field="create_at"></p-sortIcon></th>
-            <th pSortableColumn="terraform_workspace">terraform_workspace<p-sortIcon field="terraform_workspace"></p-sortIcon></th>
-            <th pSortableColumn="owner">owner<p-sortIcon field="owner"></p-sortIcon></th>
-            <th>detail</th>
-            <th>destroy</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-tableData >
-        <tr>
-            <td>{{ tableData.create_at }}</td>
-            <td>{{ tableData.terraform_workspace }}</td>
-            <td>{{ tableData.owner }}</td>
-            <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
-                <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
-            </td>
-            <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
-                <i class="pi pi-trash" style="margin-right: 10%;" ></i>Destroy
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+    <p *ngIf="isGettingData">Getting Data Now...</p>
+    <p-table *ngIf="!isGettingData" #vmTable [value]="tableData" responsiveLayout="scroll" [globalFilterFields]="['createdDatetime','updatedDatetime','terraformWorkspace','resourceGroupName','envOwner','']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target)!.value, 'contains')" placeholder="Search keyword"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header"> 
+            <tr>
+                <th pSortableColumn="createdDatetime">CreatedDatetime<p-sortIcon field="createdDatetime"></p-sortIcon></th>
+                <th pSortableColumn="updatedDatetime">UpdatedDatetime<p-sortIcon field="updatedDatetime"></p-sortIcon></th>
+                <th pSortableColumn="terraformWorkspace">TerraformWorkspace<p-sortIcon field="terraformWorkspace"></p-sortIcon></th>
+                <th pSortableColumn="resourceGroupName">ResourceGroupName<p-sortIcon field="resourceGroupName"></p-sortIcon></th>
+                <th pSortableColumn="envOwner">EnvOwner<p-sortIcon field="envOwner"></p-sortIcon></th>
+                <th pSortableColumn="jenkinsServerName">JenkinsServerName<p-sortIcon field="jenkinsServerName"></p-sortIcon></th>
+                <th pSortableColumn="jenkinsJobBranch">jenkinsJobBranch<p-sortIcon field="jenkinsJobBranch"></p-sortIcon></th>
+                <th>detail</th>
+                <th>destroy</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tableData >
+            <tr>
+                <td>{{ tableData.createdDatetime }}</td>
+                <td>{{ tableData.updatedDatetime }}</td>
+                <td>{{ tableData.terraformWorkspace }}</td>
+                <td>{{ tableData.resourceGroupName }}</td>
+                <td>{{ tableData.envOwner }}</td>
+                <td>{{ tableData.jenkinsServerName }}</td>
+                <td>{{ tableData.jenkinsJobBranch }}</td>
+                <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                    <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
+                </td>
+                <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                    <i class="pi pi-trash" style="margin-right: 10%;" ></i>Destroy
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>

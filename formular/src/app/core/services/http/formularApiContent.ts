@@ -4,6 +4,7 @@ export class ApiUrls {
     public static SERVICE_PRINCIPLE_DELETE = "/api/ServicePrincipal/Delete";
 
     public static AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS = "/api/AzureEnv/GetAvailableSubscriptions"
+    public static AZURE_ENV_GET_BY_SUBSCRIPTION = "/api/AzureEnv/Get"
 }
 
 export class ServicePrincipleGetAllResponse {
@@ -22,4 +23,14 @@ export class ServicePrincipleCreateParameter {
 export class AzureEnvGetAvailiableSubscriptionResponse {
     public subscriptionId: string = "" ;
     public subscriptionName: string = "" ;
+}
+
+export type AzureEnvGetBySubscriptionResponse = {
+    createdDatetime: Date; 
+    updatedDatetime: Date;
+    resourceGroupName: string;
+    terraformWorkspace: string;
+    jenkinsServerName: string;
+    envOwner: string;
+    jenkinsJobBranch: string;
 }
