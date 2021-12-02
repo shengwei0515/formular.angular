@@ -1,33 +1,13 @@
-/* .setting-card .p-accordion-content	 {
-    background-color: white;
-    border-color: white
-}
- */
-.setting-card .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link{
-    background-color: #04AA6D;
-    color: white
-}
-
-.setting-card .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
-    background-color: #04AA6D;
-    color: black
-}
-
-.setting-card .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link:hover {
-    color: #04AA6D;
-}
-
-
-tr:hover {
-    background-color: #04AA6D;
-    color: white;
+tr.ng-star-inserted:hover {
+    background-color: #76b765;
+    color: black;
  }
  
 td.button {
     box-sizing:content-box;
  }
  
-.td-button:hover {
-    background-color: #04AA6D;
+ .td-button:hover {
+    background-color: #C5E1A5;
     box-shadow: 0px 0px 20px white;
  }
