@@ -1,0 +1,14 @@
+<H3>Make Sure You Want To Delete Jenkins Account With:</H3>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">ServerName:</b>
+    <b class="col-12 mb-2 md:col-8 md:mb-0 flex align-items-center">{{ modelToDelete.serverName }}</b>
+</div>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">AccountName:</b>
+    <b class="col-12 mb-2 md:col-8 md:mb-0 flex align-items-center">{{ modelToDelete.account }}</b>
+</div>
+<div class="field flex flex-row-reverse">
+    <button class="p-button flex ml-2" pButton type="button" label="Yes" icon="pi" (click)="onClieckYes()"></button>
+    <button class="p-button flex ml-2" pButton type="button" label="No" icon="pi" (click)="onClieckNo()"></button>
+</div>
+

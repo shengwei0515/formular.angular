@@ -27,6 +27,9 @@ import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-ca
 import { AzureEnvComponent } from './pages/azure-env/azure-env.component';
 import { CreateSpComponent } from './pages/setting/azure-sp-setting-card/create-sp/create-sp.component';
 import { DeleteSpComponent } from './pages/setting/azure-sp-setting-card/delete-sp/delete-sp.component';
+import { JenkinsAccountSettingCardComponent } from './pages/setting/jenkins-account-setting-card/jenkins-account-setting-card.component';
+import { DeleteJaComponent } from './pages/setting/jenkins-account-setting-card/delete-ja/delete-ja.component';
+import { CreateJaComponent } from './pages/setting/jenkins-account-setting-card/create-ja/create-ja.component';
 
 
 
@@ -39,7 +42,10 @@ import { DeleteSpComponent } from './pages/setting/azure-sp-setting-card/delete-
     SettingComponent,
     VmTableComponent,
     CreateSpComponent,
-    DeleteSpComponent
+    DeleteSpComponent,
+    JenkinsAccountSettingCardComponent,
+    DeleteJaComponent,
+    CreateJaComponent
   ],
   imports: [
     AppRoutingModule,

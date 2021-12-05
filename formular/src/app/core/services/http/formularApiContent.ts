@@ -5,6 +5,8 @@ export class ApiUrls {
 
     public static AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS = "/api/AzureEnv/GetAvailableSubscriptions"
     public static AZURE_ENV_GET_BY_SUBSCRIPTION = "/api/AzureEnv/Get"
+
+    public static JENKINS_ACCOUNT = "/api/JenkinsAccount"
 }
 
 export class ServicePrincipleGetAllResponse {
@@ -33,4 +35,16 @@ export type AzureEnvGetBySubscriptionResponse = {
     jenkinsServerName: string;
     envOwner: string;
     jenkinsJobBranch: string;
+}
+
+export type JenkinsAccountResponse = {
+    id: number;
+    account: string;
+    serverName: string;
+}
+
+export type JenkinsAccountParameter = {
+    account: string;
+    secret: string;
+    serverName: string;
 }

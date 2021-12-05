@@ -1,10 +1,10 @@
 <div style="padding-top: 1%;">
-    <p-accordion (onOpen)="onTableOpen($event)" (onClose)="onTableClose($event)">
-        <p-accordionTab header="Azure Serive Principle Setting" class="setting-card">
-            <app-azure-sp-setting-card *ngIf="ifAzureSpSettingShow"></app-azure-sp-setting-card>
+    <p-accordion>
+        <p-accordionTab #sp header="Azure Serive Principle Setting" class="setting-card">
+            <app-azure-sp-setting-card *ngIf="sp.selected"></app-azure-sp-setting-card>
         </p-accordionTab>
-        <p-accordionTab header="Jenkins Server Setting" class="setting-card">
-            Content 2
+        <p-accordionTab #ja header="Jenkins Server Setting" class="setting-card">
+            <app-jenkins-account-setting-card *ngIf="ja.selected"></app-jenkins-account-setting-card>
         </p-accordionTab>
     </p-accordion>
 </div>
