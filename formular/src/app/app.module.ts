@@ -12,6 +12,7 @@ import { VmTableComponent } from './pages/azure-env/vm-table/vm-table.component'
 
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
@@ -30,6 +31,8 @@ import { DeleteSpComponent } from './pages/setting/azure-sp-setting-card/delete-
 import { JenkinsAccountSettingCardComponent } from './pages/setting/jenkins-account-setting-card/jenkins-account-setting-card.component';
 import { DeleteJaComponent } from './pages/setting/jenkins-account-setting-card/delete-ja/delete-ja.component';
 import { CreateJaComponent } from './pages/setting/jenkins-account-setting-card/create-ja/create-ja.component';
+import { CreateJjComponent } from './pages/setting/jenkins-account-setting-card/create-jj/create-jj.component';
+import { DeleteJjComponent } from './pages/setting/jenkins-account-setting-card/delete-jj/delete-jj.component';
 
 
 
@@ -45,7 +48,9 @@ import { CreateJaComponent } from './pages/setting/jenkins-account-setting-card/
     DeleteSpComponent,
     JenkinsAccountSettingCardComponent,
     DeleteJaComponent,
-    CreateJaComponent
+    CreateJaComponent,
+    CreateJjComponent,
+    DeleteJjComponent
   ],
   imports: [
     AppRoutingModule,
@@ -53,6 +58,7 @@ import { CreateJaComponent } from './pages/setting/jenkins-account-setting-card/
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
+    ConfirmDialogModule,
     DynamicDialogModule,
     FormsModule,
     HttpClientModule,

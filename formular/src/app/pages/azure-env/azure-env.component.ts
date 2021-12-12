@@ -11,17 +11,24 @@ import { HttpResponse } from '@angular/common/http';
 export class AzureEnvComponent implements OnInit {
 
   subscriptionList: AzureEnvGetAvailiableSubscriptionResponse[] = [];
+  isGettingData: boolean = true;
 
   constructor(
     private readonly httpService: HttpService,
   ) { }
 
   ngOnInit(): void {
-    this.getAvailiableSubscription();
+    this.getInitData();
   }
 
-  getAvailiableSubscription(): void {
-    this.httpService.get({url: ApiUrls.AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS}).subscribe( (res) => {
+  async getInitData(): Promise<any>{
+    this.isGettingData = true;
+    await this.getAvailiableSubscription();
+    this.isGettingData = false;
+  }
+
+  async getAvailiableSubscription(): Promise<any> {
+    return this.httpService.get({url: ApiUrls.AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS}).toPromise().then(res => {
       this.subscriptionList = res.body;
     });
   }

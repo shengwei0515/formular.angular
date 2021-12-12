@@ -7,6 +7,8 @@ export class ApiUrls {
     public static AZURE_ENV_GET_BY_SUBSCRIPTION = "/api/AzureEnv/Get"
 
     public static JENKINS_ACCOUNT = "/api/JenkinsAccount"
+
+    public static JENKINS_JOB = "/api/JenkinsJob"
 }
 
 export class ServicePrincipleGetAllResponse {
@@ -37,10 +39,24 @@ export type AzureEnvGetBySubscriptionResponse = {
     jenkinsJobBranch: string;
 }
 
+export type JenkinsJob = {
+    id: number;
+    jenkinsJobName: string;
+    jenkinsJobFullUrl: string;
+    jenkinsAccountId: number;
+}
+
+export type JenkinJobParameter = {
+    jenkinsJobName: string;
+    jenkinsJobFullUrl: string;
+    jenkinsAccountId: number;
+}
+
 export type JenkinsAccountResponse = {
     id: number;
     account: string;
     serverName: string;
+    jenkinsJobs: JenkinsJob[];
 }
 
 export type JenkinsAccountParameter = {

@@ -7,13 +7,24 @@
             <tr>
                 <th pSortableColumn="serverName">JenkinsServerName<p-sortIcon field="serverName"></p-sortIcon></th>
                 <th pSortableColumn="account">JenkinsAccountName<p-sortIcon field="account"></p-sortIcon></th>
-                <th>Remove</th>
+                <th>Jenkins Jobs</th>
+                <th>Add Jenkins Job</th>
+                <th>Remove Account</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-jenkinsAccountSetting >
             <tr>
                 <td>{{ jenkinsAccountSetting.serverName }}</td>
                 <td>{{ jenkinsAccountSetting.account }}</td>
+                <td>
+                    <div class="field grid flex" *ngFor="let job of jenkinsAccountSetting.jenkinsJobs">
+                        <div class="col-12 md:col-8 flex align-items-center">{{ job.jenkinsJobName }}</div>
+                        <button id="deleteJjButton" icon="pi pi-times" class="col-12 md:col-2 flext p-button-danger" pButton type="button" (click)="deleteJj(job)"></button>
+                    </div>
+                </td>
+                <td class="td-button" type="button" (click)="clickAddJenkinsJob(jenkinsAccountSetting)"> 
+                    <i class="pi pi-plus-circle" style="margin-right: 10%;" ></i>Add Job
+                </td>
                 <td class="td-button" type="button" (click)="clickRemove(jenkinsAccountSetting)"> 
                     <i class="pi pi-trash" style="margin-right: 10%;" ></i>Remove
                 </td>
@@ -21,3 +32,4 @@
         </ng-template>
     </p-table>
 </div>
+<p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
