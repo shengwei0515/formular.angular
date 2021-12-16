@@ -13,19 +13,19 @@
             <tr>
                 <th pSortableColumn="createdDatetime">CreatedDatetime<p-sortIcon field="createdDatetime"></p-sortIcon></th>
                 <th pSortableColumn="updatedDatetime">UpdatedDatetime<p-sortIcon field="updatedDatetime"></p-sortIcon></th>
-                <th pSortableColumn="terraformWorkspace">TerraformWorkspace<p-sortIcon field="terraformWorkspace"></p-sortIcon></th>
+                <th pSortableColumn="terraformWorkspace">EnvName<p-sortIcon field="terraformWorkspace"></p-sortIcon></th>
                 <th pSortableColumn="resourceGroupName">ResourceGroupName<p-sortIcon field="resourceGroupName"></p-sortIcon></th>
                 <th pSortableColumn="envOwner">EnvOwner<p-sortIcon field="envOwner"></p-sortIcon></th>
                 <th pSortableColumn="jenkinsServerName">JenkinsServerName<p-sortIcon field="jenkinsServerName"></p-sortIcon></th>
-                <th pSortableColumn="jenkinsJobBranch">jenkinsJobBranch<p-sortIcon field="jenkinsJobBranch"></p-sortIcon></th>
+                <th pSortableColumn="jenkinsJobBranch">JobBranch<p-sortIcon field="jenkinsJobBranch"></p-sortIcon></th>
                 <th>detail</th>
                 <th>destroy</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-tableData >
             <tr>
-                <td>{{ tableData.createdDatetime }}</td>
-                <td>{{ tableData.updatedDatetime }}</td>
+                <td>{{ tableData.createdDatetimeString }}</td>
+                <td>{{ tableData.updatedDatetimeString }}</td>
                 <td>{{ tableData.terraformWorkspace }}</td>
                 <td>{{ tableData.resourceGroupName }}</td>
                 <td>{{ tableData.envOwner }}</td>
