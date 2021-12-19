@@ -14,6 +14,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
@@ -33,6 +34,7 @@ import { DeleteJaComponent } from './pages/setting/jenkins-account-setting-card/
 import { CreateJaComponent } from './pages/setting/jenkins-account-setting-card/create-ja/create-ja.component';
 import { CreateJjComponent } from './pages/setting/jenkins-account-setting-card/create-jj/create-jj.component';
 import { DeleteJjComponent } from './pages/setting/jenkins-account-setting-card/delete-jj/delete-jj.component';
+import { DeleteEnvComponent } from './pages/azure-env/vm-table/delete-env/delete-env.component';
 
 
 
@@ -50,7 +52,8 @@ import { DeleteJjComponent } from './pages/setting/jenkins-account-setting-card/
     DeleteJaComponent,
     CreateJaComponent,
     CreateJjComponent,
-    DeleteJjComponent
+    DeleteJjComponent,
+    DeleteEnvComponent
   ],
   imports: [
     AppRoutingModule,
@@ -60,6 +63,7 @@ import { DeleteJjComponent } from './pages/setting/jenkins-account-setting-card/
     ButtonModule,
     ConfirmDialogModule,
     DynamicDialogModule,
+    DropdownModule,
     FormsModule,
     HttpClientModule,
     InputTextModule,

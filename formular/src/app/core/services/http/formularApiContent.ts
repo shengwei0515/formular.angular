@@ -9,6 +9,8 @@ export class ApiUrls {
     public static JENKINS_ACCOUNT = "/api/JenkinsAccount"
 
     public static JENKINS_JOB = "/api/JenkinsJob"
+
+    public static JENKINS_CLIENT_BRANCH_LIST = "/api/JenkinsClient/Job/BranchList"
 }
 
 export class ServicePrincipleGetAllResponse {

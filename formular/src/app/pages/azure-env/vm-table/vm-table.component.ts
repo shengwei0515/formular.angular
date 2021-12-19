@@ -7,7 +7,7 @@ import { urlJoin } from 'url-join-ts';
 import { ApiUrls, AzureEnvGetBySubscriptionResponse } from 'src/app/core/services/http/formularApiContent';
 import { DetialCardComponent } from './detial-card/detial-card.component'
 
-type AzureEnvGetBySubscriptionViewModel = AzureEnvGetBySubscriptionResponse & {
+export type AzureEnvGetBySubscriptionViewModel = AzureEnvGetBySubscriptionResponse & {
   createdDatetimeString: string;
   updatedDatetimeString: string;
 }
