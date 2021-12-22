@@ -32,13 +32,15 @@ export class AzureEnvGetAvailiableSubscriptionResponse {
 }
 
 export type AzureEnvGetBySubscriptionResponse = {
-    createdDatetime: Date; 
+    createdDatetime: Date;
     updatedDatetime: Date;
     resourceGroupName: string;
     terraformWorkspace: string;
+    terraformProject: string;
     jenkinsServerName: string;
-    envOwner: string;
+    jenkinsJobName: string;
     jenkinsJobBranch: string;
+    envOwner: string;
 }
 
 export type JenkinsJob = {
@@ -58,6 +60,7 @@ export type JenkinsAccountResponse = {
     id: number;
     account: string;
     serverName: string;
+    serverBaseUrl: string;
     jenkinsJobs: JenkinsJob[];
 }
 
@@ -65,4 +68,5 @@ export type JenkinsAccountParameter = {
     account: string;
     secret: string;
     serverName: string;
+    serverBaseUrl: string;
 }

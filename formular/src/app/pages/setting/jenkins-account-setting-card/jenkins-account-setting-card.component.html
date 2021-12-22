@@ -2,10 +2,11 @@
     <div style="padding-bottom: 1%;" class="flex">
         <button pButton type="button" label="new" icon="pi pi-plus" class="p-button ml-auto" (click)="showCreateDiag()"></button>
     </div>
-    <p-table [value]="jenkinsAccounts" responsiveLayout="scroll" [globalFilterFields]="['clientId', 'account']">
+    <p-table [value]="jenkinsAccounts" responsiveLayout="scroll" [globalFilterFields]="['clientId', 'serverBaseUrl', 'account']">
         <ng-template pTemplate="header"> 
             <tr>
                 <th pSortableColumn="serverName">JenkinsServerName<p-sortIcon field="serverName"></p-sortIcon></th>
+                <th pSortableColumn="serverBaseUrl">ServerBaseUrl<p-sortIcon field="serverBaseUrl"></p-sortIcon></th>
                 <th pSortableColumn="account">JenkinsAccountName<p-sortIcon field="account"></p-sortIcon></th>
                 <th>Jenkins Jobs</th>
                 <th>Add Jenkins Job</th>
@@ -15,6 +16,7 @@
         <ng-template pTemplate="body" let-jenkinsAccountSetting >
             <tr>
                 <td>{{ jenkinsAccountSetting.serverName }}</td>
+                <td>{{ jenkinsAccountSetting.serverBaseUrl }}</td>
                 <td>{{ jenkinsAccountSetting.account }}</td>
                 <td>
                     <div class="field grid flex" *ngFor="let job of jenkinsAccountSetting.jenkinsJobs">

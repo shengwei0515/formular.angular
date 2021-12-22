@@ -6,6 +6,13 @@
 </div>
 
 <div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Base Url:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText placeholder="http://jenkins-host-which-formular-can-assess" [(ngModel)]="jenkinAccountToCreate.serverBaseUrl" />
+    </div>
+</div>
+
+<div class="field grid flex">
     <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Account Name:</b>
     <div class="col-12 md:col-8 flex">
         <input class="inputfield w-full" type="text" pInputText  placeholder="the account which can login this server" [(ngModel)]="jenkinAccountToCreate.account" />

@@ -19,7 +19,8 @@ export class CreateJaComponent implements OnInit {
     this.jenkinAccountToCreate = {
       serverName: "",
       account: "",
-      secret: ""
+      secret: "",
+      serverBaseUrl: ""
     };
   }
 

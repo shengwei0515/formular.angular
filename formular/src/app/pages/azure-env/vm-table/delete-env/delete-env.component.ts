@@ -24,9 +24,11 @@ export class DeleteEnvComponent implements OnInit {
     updatedDatetime: new Date(), 
     resourceGroupName: "CyberSaaSSIT",
     terraformWorkspace: "sit",
-    jenkinsServerName: "string",
+    terraformProject: "cybersas",
+    jenkinsServerName: "small_seal_server",
     envOwner: "small_seal",
     jenkinsJobBranch: "develop",
+    jenkinsJobName: "Azure.Machine",
     createdDatetimeString: "20211220",
     updatedDatetimeString: "2021221213"
   }
@@ -59,12 +61,10 @@ export class DeleteEnvComponent implements OnInit {
   }
 
   async jenkinsJobNameOnFocus(serverName: string){
-    console.log(serverName)
     let jobNameList = await (await this.getJenkinsAccounts()).find(x=>x.serverName == serverName)
                                                                     ?.jenkinsJobs
                                                                     .map(x=>x.jenkinsJobName);
-    this.jenkinsJobNameList = jobNameList == undefined ? [] : jobNameList
-    console.log(this.jenkinsJobNameList)
+    this.jenkinsJobNameList = jobNameList === undefined ? [] : jobNameList
   }
 
   jenkinsJobBranchOnFocus(){
