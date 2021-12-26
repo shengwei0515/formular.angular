@@ -16,6 +16,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
@@ -71,7 +72,8 @@ import { DeleteEnvComponent } from './pages/azure-env/vm-table/delete-env/delete
     MessageModule,
     NoopAnimationsModule,
     PanelModule,
-    TableModule
+    TableModule,
+    ToastModule
   ],
   providers: [
     AppConfigService,

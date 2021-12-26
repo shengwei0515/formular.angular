@@ -10,7 +10,8 @@ export class ApiUrls {
 
     public static JENKINS_JOB = "/api/JenkinsJob"
 
-    public static JENKINS_CLIENT_BRANCH_LIST = "/api/JenkinsClient/Job/BranchList"
+    public static JENKINS_CLIENT_JOB_BRANCH_LIST = "/api/JenkinsClient/Job/BranchList"
+    public static JENKINS_CLIENT_JOB_TRIGGER_DESTROY_ENV = "/api/JenkinsClient/Job/TriggerDestroyEnv"
 }
 
 export class ServicePrincipleGetAllResponse {
@@ -50,7 +51,7 @@ export type JenkinsJob = {
     jenkinsAccountId: number;
 }
 
-export type JenkinJobParameter = {
+export type JenkinsJobParameter = {
     jenkinsJobName: string;
     jenkinsJobFullUrl: string;
     jenkinsAccountId: number;
@@ -69,4 +70,16 @@ export type JenkinsAccountParameter = {
     secret: string;
     serverName: string;
     serverBaseUrl: string;
+}
+
+export type JenkinsJobBranchGetParameter = {
+    serverName: string;
+    jobName: string;
+}
+
+export type JenkinsJobTriggerDestroyEnvParameter = {
+    serverName: string;
+    jobName: string;
+    jobBranch: string;
+    envName: string;
 }

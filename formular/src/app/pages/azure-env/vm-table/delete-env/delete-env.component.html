@@ -1,31 +1,40 @@
 <div class="field grid flex">
     <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">EnvName:</b>
     <div class="col-12 md:col-8 flex">
-        <input class="inputfield w-full" type="text" pInputText placeholder="Client Id" [(ngModel)]="deletePayload.terraformWorkspace" disabled="true"/>
+        <input class="inputfield w-full" type="text" pInputText placeholder="EnvName (terraform workspace)" 
+                                         [(ngModel)]="deletePayload.envName" disabled="true"/>
     </div>
 </div>
 
 <div class="field grid flex">
     <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Server Name:</b>
     <div class="col-12 md:col-8 flex">
-        <p-dropdown class="w-full" [style]="{'width':'100%'}" [(ngModel)]="deletePayload.jenkinsServerName" [options]="jenkinsServerNameList" (onClick)="serverNameOnFocus()" ></p-dropdown>
+        <p-dropdown class="w-full" [style]="{'width':'100%'}" 
+                                   [disabled]="ifDisableServerNane"
+                                   [(ngModel)]="deletePayload.serverName" 
+                                   [options]="jenkinsServerNameList" ></p-dropdown>
     </div>
 </div>
 
 <div class="field grid flex">
     <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Job Name:</b>
     <div class="col-12 md:col-8 flex">
-        <p-dropdown class="w-full" [style]="{'width':'100%'}" [(ngModel)]="deletePayload.jenkinsJobName" [options]="jenkinsJobNameList" (onFocus)="jenkinsJobNameOnFocus(deletePayload.jenkinsServerName)"></p-dropdown>
+        <p-dropdown class="w-full" [style]="{'width':'100%'}" 
+                                   [disabled]="ifDisableJobName"
+                                   [(ngModel)]="deletePayload.jobName" 
+                                   [options]="jenkinsJobNameList" ></p-dropdown>
     </div>
 </div>
 
 <div class="field grid flex">
     <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Job Branch:</b>
     <div class="col-12 md:col-8 flex">
-        <p-dropdown class="w-full" [style]="{'width':'100%'}" [(ngModel)]="deletePayload.jenkinsJobBranch" [options]="jenkinsJobBranchList" (onFocus)="jenkinsJobBranchOnFocus()"></p-dropdown>
+        <p-dropdown class="w-full" [style]="{'width':'100%'}" 
+                                   [(ngModel)]="deletePayload.jobBranch"
+                                   [options]="jenkinsJobBranchList" ></p-dropdown>
     </div>
 </div>
 
 <div class="field flex flex-row-reverse">
-    <button class="p-button flex" pButton type="button" label="Submit" icon="pi" (click)="submit(deletePayload)"></button>
+    <button class="p-button flex" pButton type="button" label="Submit" icon="pi" (click)="submit()"></button>
 </div>

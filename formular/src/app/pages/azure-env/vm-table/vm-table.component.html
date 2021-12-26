@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+
 <div style="padding-top: 1%;">
     <p *ngIf="isGettingData">Getting Data Now...</p>
     <p-table *ngIf="!isGettingData" #vmTable [value]="tableData" responsiveLayout="scroll" [globalFilterFields]="['createdDatetime','updatedDatetime','terraformWorkspace','resourceGroupName','envOwner','']">
@@ -31,10 +33,10 @@
                 <td>{{ tableData.envOwner }}</td>
                 <td>{{ tableData.jenkinsServerName }}</td>
                 <td>{{ tableData.jenkinsJobBranch }}</td>
-                <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                <td class="td-button" type="button" (click)="showDetailDialog(tableData)"> 
                     <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
                 </td>
-                <td class="td-button" type="button" (click)="showDetailDialog(tableData.terraform_workspace)"> 
+                <td class="td-button" type="button" (click)="showDestroyDialog(tableData)"> 
                     <i class="pi pi-trash" style="margin-right: 10%;" ></i>Destroy
                 </td>
             </tr>

@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiUrls, JenkinsAccountResponse } from 'src/app/core/services/http/formularApiContent';
+import { ApiUrls, JenkinsAccountResponse, JenkinsJobBranchGetParameter, JenkinsJobTriggerDestroyEnvParameter } from 'src/app/core/services/http/formularApiContent';
 import { HttpService } from 'src/app/core/services/http/http.service';
-import { HttpResponseBase } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { AzureEnvGetBySubscriptionViewModel } from '../vm-table.component'
-
-type DeleteEnvPayload = {
-  terraformWorkspace: string, 
-  jenkinsServerName: string,
-  jenkinsJobName: string,
-  jenkinsJobBranch: string,
-}
-
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-delete-env',
@@ -19,72 +13,100 @@ type DeleteEnvPayload = {
 })
 export class DeleteEnvComponent implements OnInit {
 
-  data: AzureEnvGetBySubscriptionViewModel = {
-    createdDatetime: new Date(), 
-    updatedDatetime: new Date(), 
-    resourceGroupName: "CyberSaaSSIT",
-    terraformWorkspace: "sit",
-    terraformProject: "cybersas",
-    jenkinsServerName: "small_seal_server",
-    envOwner: "small_seal",
-    jenkinsJobBranch: "develop",
-    jenkinsJobName: "Azure.Machine",
-    createdDatetimeString: "20211220",
-    updatedDatetimeString: "2021221213"
-  }
-
-  deletePayload: DeleteEnvPayload;
-
-  jenkinsServerNameList: string[];
-  jenkinsJobNameList: string[];
-  jenkinsJobBranchList: string[];
-  jenkinsAccounts: JenkinsAccountResponse[] = [];
+  data = {} as AzureEnvGetBySubscriptionViewModel
+  deletePayload = {} as JenkinsJobTriggerDestroyEnvParameter;
+  jenkinsServerNameList: string[] = [];
+  jenkinsJobNameList: string[] = [];
+  jenkinsJobBranchList: string[] = [];
+  ifDisableServerNane: boolean = true;
+  ifDisableJobName: boolean = true;
 
   constructor(
-    private readonly httpService: HttpService
+    private readonly httpService: HttpService,
+    private readonly diagConfig: DynamicDialogConfig,
+    private readonly diagRef: DynamicDialogRef,
+    private readonly msg: MessageService
     ) { 
-    this.deletePayload = {
-      terraformWorkspace: this.data.terraformWorkspace, 
-      jenkinsServerName: this.data.jenkinsServerName,
-      jenkinsJobName: "Azure.Machine",
-      jenkinsJobBranch: this.data.jenkinsJobBranch,
+    this.data = diagConfig.data?.azureEnvViewModel;
+    this.deletePayload.envName = this.data.terraformWorkspace;
+  }
+
+  async ngOnInit() {
+    console.log(this.data);
+    await this.setJenkinsServerListAndJobList();
+    await this.setJenkinsJobBranchList();
+  }
+
+  async submit(): Promise<any> {
+    try {
+      await this.sendDestroyEnvRequest();
+      this.msg.add({severity: 'success', summary: 'Trigger Destroy Request Success', detail: ""});
+      this.diagRef.close();
+    } catch {
+      this.msg.add({severity: 'error', summary: 'Trigger Destroy Request Failed', detail: "Please check your payload setting for jenkins account setting"})
+      this.diagRef.close();
     }
-
-    this.jenkinsServerNameList = [this.data.jenkinsServerName];
-    this.jenkinsJobNameList = ["Azure.Machine"];
-    this.jenkinsJobBranchList = [this.data.jenkinsJobBranch];
   }
 
-
-  async serverNameOnFocus(){
-    this.jenkinsServerNameList = await (await this.getJenkinsAccounts()).map(x => x.serverName);
+  async setJenkinsServerListAndJobList() {
+    let jenkinsAccounts = await this.getJenkinsAccounts()
+    let account = jenkinsAccounts.find(x => x.serverName == this.data.jenkinsServerName);
+    // serverName not in jenkinsAccounts
+    if (account == undefined){
+      this.jenkinsServerNameList = [];
+      this.jenkinsJobNameList = [];
+    } else {
+      this.jenkinsServerNameList = [this.data.jenkinsServerName];
+      this.deletePayload.serverName = this.data.jenkinsServerName;
+      let jobs = account.jenkinsJobs.map(x => x.jenkinsJobName);
+      if (jobs.includes(this.data.jenkinsJobName)){
+        this.jenkinsJobNameList = [this.data.jenkinsJobName];
+        this.deletePayload.jobName = this.data.jenkinsJobName;
+      } else {
+        this.jenkinsJobNameList = [];
+      }
+    }
   }
 
-  async jenkinsJobNameOnFocus(serverName: string){
-    let jobNameList = await (await this.getJenkinsAccounts()).find(x=>x.serverName == serverName)
-                                                                    ?.jenkinsJobs
-                                                                    .map(x=>x.jenkinsJobName);
-    this.jenkinsJobNameList = jobNameList === undefined ? [] : jobNameList
+  async setJenkinsJobBranchList() {
+    let branchList: string[] = await this.getJenkinsJobBranchs(this.deletePayload.serverName, this.deletePayload.jobName);
+    if (branchList.includes(this.data.jenkinsJobBranch)){
+      // reorder the branch list
+      this.jenkinsJobBranchList = [this.data.jenkinsJobBranch].concat(branchList.filter(x => x != this.data.jenkinsJobBranch));
+      // this.deletePayload.jobBranch = this.data.jenkinsJobBranch;
+      this.deletePayload.jobBranch = '8787787';
+    }
+    else {
+      this.jenkinsJobBranchList = branchList;
+    }
   }
 
-  jenkinsJobBranchOnFocus(){
+  async getJenkinsJobBranchs(serverName: string, jobName: string ): Promise<string[]>{
+    let getJobBranchParameter: JenkinsJobBranchGetParameter = {
+      serverName: serverName,
+      jobName: jobName
+    }
+    let httpParams = new HttpParams({fromObject: getJobBranchParameter});
 
+    let branchList: string[] = [];
+    await this.httpService.get({url: ApiUrls.JENKINS_CLIENT_JOB_BRANCH_LIST, params: httpParams}).toPromise().then( res => {
+      branchList = res.body;
+    });
+    return branchList
   }
 
-  async getJenkinsAccounts(): Promise<JenkinsAccountResponse[]>{
-    let jenkinsAccounts: JenkinsAccountResponse[] = [];
-    await this.httpService.get({url: ApiUrls.JENKINS_ACCOUNT}).toPromise().then(res => {
+  async getJenkinsAccounts(): Promise<JenkinsAccountResponse[]> {
+    let jenkinsAccounts: JenkinsAccountResponse[] = []
+    await this.httpService.get({url: ApiUrls.JENKINS_ACCOUNT}).toPromise().then( res => {
       jenkinsAccounts = res.body;
     });
-    return jenkinsAccounts
+    return jenkinsAccounts;
   }
 
-  submit(): void {
-    console.log(this.deletePayload )
+  async sendDestroyEnvRequest(): Promise<any> {
+    let httpResponse = await this.httpService.post({url: ApiUrls.JENKINS_CLIENT_JOB_TRIGGER_DESTROY_ENV, body: this.deletePayload}).toPromise();
+    return httpResponse;
   }
 
-
-
-  ngOnInit(): void {
-  }
+  
 }

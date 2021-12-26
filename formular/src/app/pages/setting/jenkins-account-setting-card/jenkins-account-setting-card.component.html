@@ -5,11 +5,11 @@
     <p-table [value]="jenkinsAccounts" responsiveLayout="scroll" [globalFilterFields]="['clientId', 'serverBaseUrl', 'account']">
         <ng-template pTemplate="header"> 
             <tr>
-                <th pSortableColumn="serverName">JenkinsServerName<p-sortIcon field="serverName"></p-sortIcon></th>
-                <th pSortableColumn="serverBaseUrl">ServerBaseUrl<p-sortIcon field="serverBaseUrl"></p-sortIcon></th>
-                <th pSortableColumn="account">JenkinsAccountName<p-sortIcon field="account"></p-sortIcon></th>
-                <th>Jenkins Jobs</th>
-                <th>Add Jenkins Job</th>
+                <th pSortableColumn="serverName">ServerName<p-sortIcon field="serverName"></p-sortIcon></th>
+                <th pSortableColumn="serverBaseUrl">BaseUrl<p-sortIcon field="serverBaseUrl"></p-sortIcon></th>
+                <th pSortableColumn="account">AccountName<p-sortIcon field="account"></p-sortIcon></th>
+                <th>Jobs</th>
+                <th>Add Job</th>
                 <th>Remove Account</th>
             </tr>
         </ng-template>

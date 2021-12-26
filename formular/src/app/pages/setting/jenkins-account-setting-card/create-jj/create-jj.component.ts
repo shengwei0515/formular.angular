@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiUrls, JenkinJobParameter, JenkinsAccountResponse } from 'src/app/core/services/http/formularApiContent';
+import { ApiUrls, JenkinsJobParameter, JenkinsAccountResponse } from 'src/app/core/services/http/formularApiContent';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
@@ -10,7 +10,7 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 })
 export class CreateJjComponent implements OnInit {
 
-  jenkinsJobParameter: JenkinJobParameter;
+  jenkinsJobParameter: JenkinsJobParameter;
   jenkinsAccount: JenkinsAccountResponse;
   
   constructor(

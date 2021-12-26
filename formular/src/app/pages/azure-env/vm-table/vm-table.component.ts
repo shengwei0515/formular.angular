@@ -6,6 +6,7 @@ import { HttpService } from 'src/app/core/services/http/http.service';
 import { urlJoin } from 'url-join-ts';
 import { ApiUrls, AzureEnvGetBySubscriptionResponse } from 'src/app/core/services/http/formularApiContent';
 import { DetialCardComponent } from './detial-card/detial-card.component'
+import { DeleteEnvComponent } from './delete-env/delete-env.component';
 
 export type AzureEnvGetBySubscriptionViewModel = AzureEnvGetBySubscriptionResponse & {
   createdDatetimeString: string;
@@ -39,16 +40,25 @@ export class VmTableComponent implements OnInit {
 
   showDetailDialog(terraformWorkspace: string): void {
     // this.displayDetailDialog = true;
-    this.ref = this.dialogService.open(DetialCardComponent, {
+    let ref = this.dialogService.open(DetialCardComponent, {
         header: 'Detial',
         width: '90%',
         data: {
           terraformWorkspace: terraformWorkspace
         }
     });
+    // ref.onClose.subscribe((closeString: string) => {
+    //   console.log(closeString);
+    // })
+  }
 
-    this.ref.onClose.subscribe((closeString: string) => {
-      console.log(closeString);
+  showDestroyDialog(envdata: AzureEnvGetBySubscriptionViewModel): void{
+    let ref = this.dialogService.open(DeleteEnvComponent, {
+      header: "Destroy Env",
+      width: '50%',
+      data: {
+        azureEnvViewModel: envdata
+      }
     })
   }
 
