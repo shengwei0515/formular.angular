@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  formular-angular:
+    image: smallseal/formular.angular:main
+    container_name: formular-angular
+    hostname: formular-angular
+    ports:
+      - 80:80
+    volumes:
+      - ./formular-angular/appConfig.json:/usr/share/nginx/html/assets/appConfig.json
