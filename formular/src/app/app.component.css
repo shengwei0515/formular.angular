@@ -22,10 +22,11 @@ nav li a {
 }
 
 nav li a.active {
-  background-color: #04AA6D;
-  border: 2px solid #04AA6D;
+  background-color: #C5E1A5;
+  border: 2px solid #C5E1A5;
+  color: black;
 }
 
 nav li a:not(.active):hover {
-  color: #04AA6D;
+  color: #C5E1A5;
 }

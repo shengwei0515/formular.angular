@@ -1,0 +1,38 @@
+<h2>Create Job Which Managed By Following Account</h2>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Account:</b>
+    <div class="col-12 md:col-8 flex">
+        <p>{{ jenkinsAccount.account }}</p>
+    </div>
+</div>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins ServerName:</b>
+    <div class="col-12 md:col-8 flex">
+        <p>{{ jenkinsAccount.serverName }}</p>
+    </div>
+</div>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Server Base Url:</b>
+    <div class="col-12 md:col-8 flex">
+        <p>{{ jenkinsAccount.serverBaseUrl }}</p>
+    </div>
+</div>
+
+<h2>Jenkins Job Info</h2>
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Job Name:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText placeholder="the unique job name in jenkins server" [(ngModel)]="jenkinsJobParameter.jenkinsJobName" />
+    </div>
+</div>
+
+<!-- <div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Job Full Url:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="the url which formular can access this job" [(ngModel)]="jenkinsJobParameter.jenkinsFullUrl" />
+    </div>
+</div> -->
+
+<div class="field flex flex-row-reverse">
+    <button class="p-button flex" pButton type="button" label="Submit" icon="pi" (click)="submit()"></button>
+</div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetialCardComponent } from './detial-card.component';
+import { AzureEnvComponent } from './azure-env.component';
 
-describe('DetialCardComponent', () => {
-  let component: DetialCardComponent;
-  let fixture: ComponentFixture<DetialCardComponent>;
+describe('AzureEnvComponent', () => {
+  let component: AzureEnvComponent;
+  let fixture: ComponentFixture<AzureEnvComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetialCardComponent ]
+      declarations: [ AzureEnvComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetialCardComponent);
+    fixture = TestBed.createComponent(AzureEnvComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

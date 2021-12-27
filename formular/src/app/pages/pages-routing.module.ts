@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
+import { AzureEnvComponent } from './azure-env/azure-env.component';
 import { SettingComponent } from './setting/setting.component';
-import { VmTableComponent } from './vm-table/vm-table.component';
 
 const routes: Routes = [
   {
-    path: "setting",
-    component: SettingComponent
+    path: "",
+    redirectTo: "azure-env",
+    pathMatch: 'full',
   },
   {
-    path: "vm-table",
-    component: VmTableComponent
+    path: "azure-env",
+    component: AzureEnvComponent
+  },
+  {
+    path: "setting",
+    component: SettingComponent
   }
 ];
 

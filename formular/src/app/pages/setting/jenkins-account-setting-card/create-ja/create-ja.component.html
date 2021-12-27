@@ -1,0 +1,31 @@
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Server Name:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText placeholder="the server name which set in jenkins env" [(ngModel)]="jenkinAccountToCreate.serverName" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Base Url:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText placeholder="http://jenkins-host-which-formular-can-assess" [(ngModel)]="jenkinAccountToCreate.serverBaseUrl" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Account Name:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="the account which can login this server" [(ngModel)]="jenkinAccountToCreate.account" />
+    </div>
+</div>
+
+<div class="field grid flex">
+    <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">Jenkins Account Secret:</b>
+    <div class="col-12 md:col-8 flex">
+        <input class="inputfield w-full" type="text" pInputText  placeholder="the api token or password for this account" [(ngModel)]="jenkinAccountToCreate.secret" />
+    </div>
+</div>
+
+<div class="field flex flex-row-reverse">
+    <button class="p-button flex" pButton type="button" label="Submit" icon="pi" (click)="submit()"></button>
+</div>

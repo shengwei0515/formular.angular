@@ -1,4 +1,3 @@
-import { HttpEvent } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DynamicDialogRef} from 'primeng/dynamicdialog';
 import { ApiUrls, ServicePrincipleCreateParameter } from 'src/app/core/services/http/formularApiContent';
@@ -10,7 +9,6 @@ import { HttpService } from 'src/app/core/services/http/http.service';
   styleUrls: ['./create-sp.component.css']
 })
 export class CreateSpComponent implements OnInit {
-  @Output() close = new EventEmitter<any>();
   
   clientId: string;
   clientSecret: string;

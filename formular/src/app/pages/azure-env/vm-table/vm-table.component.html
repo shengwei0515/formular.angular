@@ -1,0 +1,41 @@
+<p-toast></p-toast>
+
+<div style="padding-top: 1%;">
+    <p *ngIf="isGettingData">Getting Data Now...</p>
+    <p-table *ngIf="!isGettingData" #vmTable [value]="tableData" responsiveLayout="scroll" [globalFilterFields]="['createdDatetime','updatedDatetime','terraformWorkspace','resourceGroupName','envOwner','']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="vmTable.filterGlobal($any($event.target)!.value, 'contains')" placeholder="Search keyword"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header"> 
+            <tr>
+                <th pSortableColumn="createdDatetime">CreatedDatetime<p-sortIcon field="createdDatetime"></p-sortIcon></th>
+                <th pSortableColumn="updatedDatetime">UpdatedDatetime<p-sortIcon field="updatedDatetime"></p-sortIcon></th>
+                <th pSortableColumn="terraformWorkspace">EnvName<p-sortIcon field="terraformWorkspace"></p-sortIcon></th>
+                <th pSortableColumn="resourceGroupName">ResourceGroupName<p-sortIcon field="resourceGroupName"></p-sortIcon></th>
+                <th pSortableColumn="envOwner">EnvOwner<p-sortIcon field="envOwner"></p-sortIcon></th>
+                <th pSortableColumn="jenkinsServerName">JenkinsServerName<p-sortIcon field="jenkinsServerName"></p-sortIcon></th>
+                <th pSortableColumn="jenkinsJobBranch">JobBranch<p-sortIcon field="jenkinsJobBranch"></p-sortIcon></th>
+                <th>detail</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tableData >
+            <tr>
+                <td>{{ tableData.createdDatetimeString }}</td>
+                <td>{{ tableData.updatedDatetimeString }}</td>
+                <td>{{ tableData.terraformWorkspace }}</td>
+                <td>{{ tableData.resourceGroupName }}</td>
+                <td>{{ tableData.envOwner }}</td>
+                <td>{{ tableData.jenkinsServerName }}</td>
+                <td>{{ tableData.jenkinsJobBranch }}</td>
+                <td class="td-button" type="button" (click)="showDetailDialog(tableData.resourceGroupName)"> 
+                    <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

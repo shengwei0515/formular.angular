@@ -1,9 +1,9 @@
-tr.ng-star-inserted:hover {
+tr:hover {
     background-color: #76b765;
     color: black;
  }
  
-td.button {
+ td.button {
     box-sizing:content-box;
  }
  

@@ -1,7 +1,7 @@
 
 tr:hover {
-   background-color: #04AA6D;
-   color: white;
+   background-color: #76b765;
+   color: black;
 }
 
 td.button {
@@ -9,6 +9,6 @@ td.button {
 }
 
 .td-button:hover {
-   background-color: #04AA6D;
+   background-color: #C5E1A5;
    box-shadow: 0px 0px 20px white;
 }
