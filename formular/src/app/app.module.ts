@@ -25,7 +25,7 @@ import { PanelModule } from 'primeng/panel';
 
 
 import { AppConfigService, initConfig } from './core/services/app-config/app-config.service';
-import { DetialCardComponent } from './pages/azure-env/vm-table/detial-card/detial-card.component';
+import { DetailCardComponent } from './pages/azure-env/vm-table/detial-card/detail-card.component';
 import { AzureSpSettingCardComponent } from './pages/setting/azure-sp-setting-card/azure-sp-setting-card.component';
 import { AzureEnvComponent } from './pages/azure-env/azure-env.component';
 import { CreateSpComponent } from './pages/setting/azure-sp-setting-card/create-sp/create-sp.component';
@@ -44,7 +44,7 @@ import { DeleteEnvComponent } from './pages/azure-env/vm-table/delete-env/delete
     AppComponent,
     AzureEnvComponent,
     AzureSpSettingCardComponent,
-    DetialCardComponent,
+    DetailCardComponent,
     SettingComponent,
     VmTableComponent,
     CreateSpComponent,

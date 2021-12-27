@@ -1,0 +1,21 @@
+<div *ngIf="isGettingData">
+    <p> Getting Env Detail...</p>
+</div>
+<div *ngIf="!isGettingData" style="padding-top: 1%;">
+    <p-accordion [multiple]="true">
+        <p-accordionTab #tab *ngFor="let item of detailInfoList" header="[{{ item.type }}] {{ item.name }} ({{ item.status }})" >
+            <div class="field grid flex">
+                <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">sku: </b>
+                <b class="col-12 md:col-8 md:mb-0 flex align-items-center ">{{ item.sku }}</b>
+            </div>
+            <div class="field grid flex">
+                <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">connection: </b>
+                <b class="col-12 md:col-8 md:mb-0 flex align-items-center ">{{ item.ip }}</b>
+            </div>
+            <div class="field grid flex">
+                <b class="col-12 mb-2 md:col-4 md:mb-0 flex align-items-center">storage: </b>
+                <b class="col-12 md:col-8 md:mb-0 flex align-items-center ">{{ item.storage }}</b>
+            </div>
+        </p-accordionTab>
+    </p-accordion>
+</div>

@@ -5,12 +5,17 @@ import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   {
-    path: "setting",
-    component: SettingComponent
+    path: "",
+    redirectTo: "azure-env",
+    pathMatch: 'full',
   },
   {
     path: "azure-env",
     component: AzureEnvComponent
+  },
+  {
+    path: "setting",
+    component: SettingComponent
   }
 ];
 

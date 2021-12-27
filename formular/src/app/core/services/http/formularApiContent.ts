@@ -5,11 +5,10 @@ export class ApiUrls {
 
     public static AZURE_ENV_GET_AVALIALE_SUBSCRIPTIONS = "/api/AzureEnv/GetAvailableSubscriptions"
     public static AZURE_ENV_GET_BY_SUBSCRIPTION = "/api/AzureEnv/Get"
+    public static AZURR_ENV_DETAIL = "/api/AzureEnv/EnvDetail"
 
     public static JENKINS_ACCOUNT = "/api/JenkinsAccount"
-
     public static JENKINS_JOB = "/api/JenkinsJob"
-
     public static JENKINS_CLIENT_JOB_BRANCH_LIST = "/api/JenkinsClient/Job/BranchList"
     public static JENKINS_CLIENT_JOB_TRIGGER_DESTROY_ENV = "/api/JenkinsClient/Job/TriggerDestroyEnv"
 }
@@ -82,4 +81,18 @@ export type JenkinsJobTriggerDestroyEnvParameter = {
     jobName: string;
     jobBranch: string;
     envName: string;
+}
+
+export type AzureEnvDetailResponse = {
+    type: string;
+    name: string;
+    ip: string;
+    sku: string;
+    storage: string;
+    status: string;
+}
+
+export type AzureEnvDetailParameter = {
+    subscription: string;
+    resourceGroup: string;
 }

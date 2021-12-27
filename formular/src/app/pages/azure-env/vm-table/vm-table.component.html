@@ -21,7 +21,6 @@
                 <th pSortableColumn="jenkinsServerName">JenkinsServerName<p-sortIcon field="jenkinsServerName"></p-sortIcon></th>
                 <th pSortableColumn="jenkinsJobBranch">JobBranch<p-sortIcon field="jenkinsJobBranch"></p-sortIcon></th>
                 <th>detail</th>
-                <th>destroy</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-tableData >
@@ -33,11 +32,8 @@
                 <td>{{ tableData.envOwner }}</td>
                 <td>{{ tableData.jenkinsServerName }}</td>
                 <td>{{ tableData.jenkinsJobBranch }}</td>
-                <td class="td-button" type="button" (click)="showDetailDialog(tableData)"> 
+                <td class="td-button" type="button" (click)="showDetailDialog(tableData.resourceGroupName)"> 
                     <i class="pi pi-info-circle" style="margin-right: 10%;" ></i>Detial
-                </td>
-                <td class="td-button" type="button" (click)="showDestroyDialog(tableData)"> 
-                    <i class="pi pi-trash" style="margin-right: 10%;" ></i>Destroy
                 </td>
             </tr>
         </ng-template>

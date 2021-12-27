@@ -1,0 +1,13 @@
+tr:hover {
+    background-color: #76b765;
+    color: black;
+ }
+ 
+ td.button {
+    box-sizing:content-box;
+ }
+ 
+ .td-button:hover {
+    background-color: #C5E1A5;
+    box-shadow: 0px 0px 20px white;
+ }

@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { urlJoin } from 'url-join-ts';
 import { ApiUrls, AzureEnvGetBySubscriptionResponse } from 'src/app/core/services/http/formularApiContent';
-import { DetialCardComponent } from './detial-card/detial-card.component'
+import { DetailCardComponent } from './detial-card/detail-card.component'
 import { DeleteEnvComponent } from './delete-env/delete-env.component';
 
 export type AzureEnvGetBySubscriptionViewModel = AzureEnvGetBySubscriptionResponse & {
@@ -38,13 +38,13 @@ export class VmTableComponent implements OnInit {
     this.getAzureEnvInfoBySubscription(this.subscription);
   }
 
-  showDetailDialog(terraformWorkspace: string): void {
-    // this.displayDetailDialog = true;
-    let ref = this.dialogService.open(DetialCardComponent, {
+  showDetailDialog(resourceGroup: string): void {
+    let ref = this.dialogService.open(DetailCardComponent, {
         header: 'Detial',
-        width: '90%',
+        width: '50%',
         data: {
-          terraformWorkspace: terraformWorkspace
+          resourceGroup: resourceGroup,
+          subscription: this.subscription
         }
     });
     // ref.onClose.subscribe((closeString: string) => {
